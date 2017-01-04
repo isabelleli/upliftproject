@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<title></title>
+<style>
+#canvas {
+	outline:1px solid #000;
+}
+
+#character {
+	position: relative;
+	top: 200px;
+	left: 400px;
+}
+}
+</style>
+</head>
+<body>
+
+<!--
+<form>
+	X axis: <input type="text" id="x"><br />
+	Y axis: <input type="text" id="y"><br />
+	<input type="button" value="Move" onclick="moveIt()">
+</form>
+-->
+<p id="demo"></p> <!--This is the text bubble-->
+<div id="character"> <!--This contains the image of the character-->
+<img src="character.png" width="80" height="100">
+</div>
+
+
+
+<canvas id="canvas" heigh="400" width="600"></canvas>
+<script>
+	var canvas = document.querySelector('#canvas');
+	var context = canvas.getContext('2d');
+
+	var xPos = 0;
+	var yPos = 0;
+
+    context.beginPath();
+	context.rect(xPos, yPos, 50, 50);
+	context.fillStyle = "blue";
+	context.fill();
+	context.closePath();
+
+	// function moveIt() {
+	// 	var x = document.getElementById("x").value;
+	// 	var y = document.getElementById("y").value;
+
+	// 	var character = document.getElementById("character").style;
+
+	// 	character.top = x + "px";
+	// 	character.left = y + "px";
+	// }
+
+	function drawCharacter() {
+		context.fillStyle = "red";
+		context.fillRect(100, 100, 20, 20);
+	}
+
+	function move(e){
+		if(e.keyCode==39) {
+			xPos+=5;
+		}
+		if(e.keyCode==37) {
+			xPos-=5;
+		}
+		if(e.keyCode==38) { //up
+			yPos-=5;
+		}
+		if(e.keyCode==40) {
+			yPos+=5;
+		}
+		//canvas.width= canvas.width;
+		context.clearRect(0, 0, canvas.width, canvas.height); //clears rect
+	    context.beginPath();
+		context.rect(xPos, yPos, 50, 50);
+		context.fillStyle = "blue";
+		context.fill();
+		context.closePath();
+	}
+
+	function drawAlert(e) { 
+		if(e.keyCode==32) {
+			document.getElementById("demo").innerHTML = "Doorman: Are you sure a pretty girl like you can carry that?";
+		}
+		setTimeout(eraseAlert, 5000);
+	}
+
+	function eraseAlert() {
+		document.getElementById("demo").innerHTML = "";
+	}
+
+	function draw() {
+    	document.onkeydown = move;
+    	drawCharacter();
+    	if (xPos >= 50 && xPos <= 120 && yPos >= 50 && yPos <= 120) {
+			document.addEventListener('keydown', drawAlert)
+		}
+    	requestAnimationFrame(draw);
+    }
+
+	draw();
+</script>
+
+</body>
+</html>
