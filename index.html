@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Smile For Me</title>
+	<link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+	<script type="text/javascript" src="jquery.js"></script>
+	<script type="text/javascript" src="showhide.js"></script>
+
+	<div id="comment" class="bubble-list">
+		<div class="bubble clearfix">
+			<!-- <img src="character.png" alt="Person"> -->
+			<div class="bubble-content">
+				<div class="point"></div>
+				<p>That looks too heavy for a pretty girl like you. Need help?</p>
+			</div>
+		</div>
+	</div>
+
+	<div id="popupBoxOnePosition">
+		<div class="popupBoxWrapper">
+			<div class="popupBoxContent">
+				<h3>Fact!</h3>
+				<p>The doorman’s comment about your character is an example of gender stereotyping. Gender stereotypes are pervasive in today's society. Common stereotypes about women include the assumption that they are weak and incompetent. </p>
+				<p>Click <a href="javascript:void(0)" onclick="toggle_visibility('popupBoxOnePosition');">here</a> to close popup box one.</p>
+			</div>
+		</div>
+	</div>
+
+	<div id="popupBoxTwoPosition">
+		<div class="popupBoxWrapper">
+			<div class="popupBoxContent">
+				<h3>Fact!</h3>
+				<p>Common stereotypes associated with women are that women are submissive, emotional, quiet, neat/clean, clumsy, artsy, a housewife, or good at child rearing. These stereotypes are not only harmful for women, but also men. Men are shamed for being too “feminine” if they are acting weak or not “manly” enough.</p>
+				<p>Click <a href="javascript:void(0)" onclick="toggle_visibility('popupBoxTwoPosition');">here</a> to close popup box two.</p>
+			</div>
+		</div>
+	</div>
+
+	<div id="wrapper">
+		<a class="ghost" href="javascript:void(0)" onclick="toggle_visibility('popupBoxOnePosition');">Smile and Accept</a>
+		<a class="ghost" href="javascript:void(0)" onclick="toggle_visibility('popupBoxTwoPosition');">No, I can carry it myself.</a>
+	</div><!-- wrapper end -->
+
+</body>
+
+<canvas id="canvas"></canvas>
+<script>
+	var canvas = document.querySelector('#canvas');
+	var context = canvas.getContext('2d');
+	context.canvas.width  = window.innerWidth;
+	context.canvas.height = window.innerHeight;
+
+	var xPos = 0;
+	var yPos = 333;
+
+	context.beginPath();
+	context.rect(xPos, yPos, 50, 50);
+	context.fillStyle = "blue";
+	context.fill();
+	context.closePath();
+
+
+	function drawCharacter() {
+		context.fillStyle = "red";
+		context.fillRect(200, 333, 50, 50);
+	}
+
+	function move(e){
+		if(e.keyCode==39) {
+			xPos+=5;
+		}
+		if(e.keyCode==37) {
+			xPos-=5;
+		}
+		if(e.keyCode==38) { //up
+			yPos-=5;
+		}
+		if(e.keyCode==40) {
+			yPos+=5;
+		}
+		//canvas.width= canvas.width;
+		context.clearRect(0, 0, canvas.width, canvas.height); //clears rect
+		context.beginPath();
+		context.rect(xPos, yPos, 50, 50);
+		context.fillStyle = "blue";
+		context.fill();
+		context.closePath();
+	}
+
+	function draw() {
+		document.onkeydown = move;
+		drawCharacter();
+		requestAnimationFrame(draw);
+	}
+
+	draw();
+</script>
+</html>
