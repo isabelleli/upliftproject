@@ -9,7 +9,7 @@ function nextStage() {
 }
 function move(e) {
     var x = e.which || e.keycode; //gets the keycode that the user types
-    var rect = document.getElementById("bob").getBoundingClientRect();
+    var rect = document.getElementById("char").getBoundingClientRect();
     
     switch(x) {
         case 39: //moves character right
