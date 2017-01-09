@@ -3,9 +3,8 @@ var switchVar = true,
     index = 0;
 
 function nextStage() {
-    $("#bob").css({left: 40, position:'absolute'});
-    //something that makes bob move all the way back to original place
-    $('body').css('background-image', 'url(' + backgrounds[index] + ')');
+    $("#char").css({left: 40, position:'absolute'}); //moves character back to original spot
+    $('body').css('background-image', 'url(' + backgrounds[index] + ')'); //changes background image to new one
     index++;
 }
 function move(e) {
@@ -13,33 +12,33 @@ function move(e) {
     var rect = document.getElementById("bob").getBoundingClientRect();
     
     switch(x) {
-        case 39:
+        case 39: //moves character right
             
-            $("#bob").animate({left: "+=10px"
+            $("#char").animate({left: "+=10px" 
             });
-            if (switchVar){
-                document.getElementById("bob").src="2.png";
+            if (switchVar){ //switches between two images to make walking look more realistic
+                document.getElementById("char").src="2.png"; 
                 switchVar = !switchVar;
             }
             else {
-                document.getElementById("bob").src="1.png";
+                document.getElementById("char").src="1.png";
                 switchVar=!switchVar;
             }
             break;
-        case 37:
-            $("#bob").animate({left: "-=20px"
+        case 37: //moves character left
+            $("#char").animate({left: "-=20px"
             });
             if (switchVar){
-                document.getElementById("bob").src="2.png";
+                document.getElementById("char").src="2.png";
                 switchVar = !switchVar;
             }
             else {
-                document.getElementById("bob").src="1.png";
+                document.getElementById("char").src="1.png";
                 switchVar=!switchVar;
             }
             break;
-        case 32:
-            if (rect.right >= 200) {     
+        case 32: //space bar that activates nextStage
+            if (rect.right >= 200) {  //only works if character is at specific part of page   
                 nextStage();
                 break;
             }
