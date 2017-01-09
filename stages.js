@@ -1,23 +1,21 @@
-var xPos = 20,
-    yPos = 20,
-    canvas = document.getElementById("myCanvas"),
-    ctx = canvas.getContext("2d"),
-    switchVar =true; 
- 
+var switchVar = true,
+    backgrounds = ["background2.jpg", "background3.jpg", "background4.jpg"],
+    index = 0;
 
 function nextStage() {
-    $.getScript("test.js");
-}   
-
+    $("#bob").css({left: 40, position:'absolute'});
+    //something that makes bob move all the way back to original place
+    $('body').css('background-image', 'url(' + backgrounds[index] + ')');
+    index++;
+}
 function move(e) {
     var x = e.which || e.keycode; //gets the keycode that the user types
+    var rect = document.getElementById("bob").getBoundingClientRect();
     
-    if (document.getElementById("bob").style.position.left === 100px) {
-        nextStage();
-    }
     switch(x) {
         case 39:
-            $(".bob").animate({left: "+=20px"
+            
+            $("#bob").animate({left: "+=10px"
             });
             if (switchVar){
                 document.getElementById("bob").src="2.png";
@@ -29,7 +27,7 @@ function move(e) {
             }
             break;
         case 37:
-            $(".bob").animate({left: "-=20px"
+            $("#bob").animate({left: "-=20px"
             });
             if (switchVar){
                 document.getElementById("bob").src="2.png";
@@ -40,6 +38,12 @@ function move(e) {
                 switchVar=!switchVar;
             }
             break;
-       
+        case 32:
+            if (rect.right >= 200) {     
+                nextStage();
+                break;
+            }
+       }
 };
+
 document.onkeydown = move; //calls move function if key is pressed

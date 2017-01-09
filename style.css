@@ -1,4 +1,5 @@
-#char {
+
+body {
     position: absolute;
-    background: url("2.png");
+    background-image: url("2.png");
 }
