@@ -1,5 +1,6 @@
 $(document).keypress(function(e){
     var key = e.which;
+    
     if (key == 116) {
         // if the user pressed 't' (for 'toggle'):
         $('#comment').show();

@@ -1,7 +1,8 @@
 body {
 	background-color:#000;
 	font: 1em "Trebuchet MS";
-	background:url(background.png) #A98436 no-repeat left top;
+	background:url("background.png") #A98436 no-repeat left top;
+	position: absolute;
 	background-size:100%;
 }
 
