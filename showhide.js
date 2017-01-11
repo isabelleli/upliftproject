@@ -15,8 +15,6 @@ function fade_out() {
 
 function show_options() {
   $("#wrapper").show();
-  $("#response1").show();
-  $("#response2").show();
 }
 
 function toggle_visibility(id) {
@@ -25,6 +23,12 @@ function toggle_visibility(id) {
       e.style.display = 'block';
    else
       e.style.display = 'none';
+}
+
+function clean_up() {
+  document.getElementById('wrapper').style.display = 'none';
+  document.getElementById('popupBoxOnePosition').style.display = 'none';
+  document.getElementById('popupBoxTwoPosition').style.display = 'none';
 }
 
 // $('#show').click(function() {
