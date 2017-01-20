@@ -1,5 +1,5 @@
 var switchVar = true,
-    audio = document.createElement('audio');
+    audio = document.createElement('audio'),
     backgrounds = ["background2.jpg", "background3.jpg", "background4.jpg"],
     npcs = ["streetguy.png"],
     music = ["trafficJam.mp3"],
