@@ -1,12 +1,21 @@
 body {
 	background-color:#000;
 	font: 1em "Trebuchet MS";
+	
+}
+html, body {
+	margin: 0;
+	padding:0;
+}
+#background {
 	background:url("background.png") #A98436 no-repeat left top;
 	position: absolute;
-	/*background-size:100%;/*
-
+	height: 100%;
+	width: 100%;
 }
-
+#intro {
+	margin-bottom: 2em;
+}
 #canvas {
 	position: absolute; 
 	top: 100px;
@@ -50,6 +59,23 @@ a.ghost:hover, a.ghost:focus {
 	display:inline-block;
 }
 
+.blur {
+	-webkit-filter: blur(3px);
+	-moz-filter: blur(3px);
+	filter: blur(3px);
+}
+.dialog-box {
+	width: 400px;
+	height: 200px;
+	background: #fff;
+	top: 50%;
+	left: 50%;
+	position: fixed;
+	margin-left: -230px;
+	margin-top: -175px;
+	padding: 25px;
+
+}
 * html .clearfix {
 	height:1%;
 }
