@@ -8,7 +8,7 @@ html, body {
 	padding:0;
 }
 #background {
-	background:url("background.png") #A98436 no-repeat left top;
+	background:url("Images/background.png") #A98436 no-repeat left top;
 	position: absolute;
 	height: 100%;
 	width: 100%;

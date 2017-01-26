@@ -1,7 +1,7 @@
 var switchVar = true,
     audio = document.createElement('audio'),
-    backgrounds = ["background2.jpg", "background3.jpg", "background4.jpg"],
-    npcs = ["streetguy.png"],
+    backgrounds = ["Images/background2.jpg", "Images/background3.jpg", "Images/background4.jpg"],
+    npcs = ["Images/streetguy.png"],
     music = ["trafficJam.mp3"],
     prompt = ["It's the beginning of a new day. Your character is just about to leave the lobby and get ready for work. You're carrying something heavy as well.",
                 "You left the apartment lobby and you are now walking to work.",
@@ -25,6 +25,8 @@ var switchVar = true,
              "A 2015 study conducted by VitalSmarts and led by Joseph Grenny and David Maxfield found that “women’s perceived competency drops by 35 percent and their perceived deserved compensation by $15,088 when they are assertive or forceful”. Grenny states that women are expected to conform to cultural norms and stereotypes that women are caring and nurturing; therefore, women are judged harder than men even when they are acting equally as assertive.", 
              "Contrary to popular misconceptions, women are not harassed because they dress provocatively or act in a sexual manner. In fact, research shows that victims of sexual harassment vary in “physical appearance, type of dress, age, and behavior” (University of Oregon). The one trait that over 99% of the victims share is that they are female. "],
     pressingToggle = 0,
+    char1 = "Images/1.png",
+    char2 = "Images/2.png",
     index = 0;
 audio.id = "audio";
 audio.src = 'alarm.mp3';
@@ -120,11 +122,11 @@ function move(e) {
             $("#char").animate({left: "+=10px" 
             });
             if (switchVar){ //switches between two images to make walking look more realistic
-                document.getElementById("char").src="2.png"; 
+                document.getElementById("char").src=char2; 
                 switchVar = !switchVar;
             }
             else {
-                document.getElementById("char").src="1.png";
+                document.getElementById("char").src=char1;
                 switchVar=!switchVar;
             }
             break;
@@ -132,11 +134,11 @@ function move(e) {
             $("#char").animate({left: "-=20px"
             });
             if (switchVar){
-                document.getElementById("char").src="2.png";
+                document.getElementById("char").src=char2;
                 switchVar = !switchVar;
             }
             else {
-                document.getElementById("char").src="1.png";
+                document.getElementById("char").src=char1;
                 switchVar=!switchVar;
             }
             break;
